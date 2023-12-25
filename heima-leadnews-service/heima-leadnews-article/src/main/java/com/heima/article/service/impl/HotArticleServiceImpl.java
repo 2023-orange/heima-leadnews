@@ -68,13 +68,13 @@ public class HotArticleServiceImpl implements HotArticleService {
                     List<HotArticleVo> hotArticleVos = hotArticleVoList.stream().filter(x -> x.getChannelId().equals(wmChannel.getId())).collect(Collectors.toList());
                     //给文章排序，取分值较高的前30条文章存入redis key：频道id value：30条文章数据
                     hotArticleVos = hotArticleVos.stream().sorted(Comparator.comparing(HotArticleVo::getScore).reversed()).collect(Collectors.toList());
-                    sortAndCache(hotArticleVos, wmChannel.getId().toString());
+                    sortAndCache(hotArticleVos, ArticleConstants.HOT_ARTICLE_FIRST_PAGE + wmChannel.getId());
                 }
                 }
             }
         //设置推荐数据
         hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArticleVo::getScore).reversed()).collect(Collectors.toList());
-        sortAndCache(hotArticleVoList, ArticleConstants.DEFAULT_TAG);
+        sortAndCache(hotArticleVoList, ArticleConstants.HOT_ARTICLE_FIRST_PAGE + ArticleConstants.DEFAULT_TAG);
     }
 
     /*
@@ -84,7 +84,7 @@ public class HotArticleServiceImpl implements HotArticleService {
         if (hotArticleVos.size() > 30) {
             hotArticleVos = hotArticleVos.subList(0, 30);
         }
-        cacheService.set(ArticleConstants.HOT_ARTICLE_FIRST_PAGE + key, JSON.toJSONString(hotArticleVos));
+        cacheService.set(key, JSON.toJSONString(hotArticleVos));
     }
 
 
