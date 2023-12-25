@@ -1,0 +1,5 @@
+com\heima\apis\wemedia\IWemediaClient.class
+com\heima\apis\user\IWmUserClient.class
+com\heima\apis\article\fallback\IArticleClientfallback.class
+com\heima\apis\schedule\IScheduleClient.class
+com\heima\apis\article\IArticleClient.class

@@ -1,0 +1,63 @@
+{
+  "groups": [
+    {
+      "name": "aliyun",
+      "type": "com.heima.common.aliyun.GreenImageScan",
+      "sourceType": "com.heima.common.aliyun.GreenImageScan"
+    },
+    {
+      "name": "aliyun",
+      "type": "com.heima.common.aliyun.GreenTextScan",
+      "sourceType": "com.heima.common.aliyun.GreenTextScan"
+    },
+    {
+      "name": "baiduyun",
+      "type": "com.heima.common.baiduyun.BaiDuYunContentModerationUtil",
+      "sourceType": "com.heima.common.baiduyun.BaiDuYunContentModerationUtil"
+    }
+  ],
+  "properties": [
+    {
+      "name": "aliyun.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.heima.common.aliyun.GreenImageScan"
+    },
+    {
+      "name": "aliyun.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.heima.common.aliyun.GreenTextScan"
+    },
+    {
+      "name": "aliyun.scenes",
+      "type": "java.lang.String",
+      "sourceType": "com.heima.common.aliyun.GreenImageScan"
+    },
+    {
+      "name": "aliyun.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.heima.common.aliyun.GreenImageScan"
+    },
+    {
+      "name": "aliyun.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.heima.common.aliyun.GreenTextScan"
+    },
+    {
+      "name": "baiduyun.api-key",
+      "type": "java.lang.String",
+      "description": "这里的参数之所以没有直接声明是因为使用到了nacos 因为用到了@ConfigurationProperties注解，他会在springboot启动的时候注入baiduyun 我在nacos定义的内容是： baiduyun:   api_key: ******   secret_key: ******   appid: ******",
+      "sourceType": "com.heima.common.baiduyun.BaiDuYunContentModerationUtil"
+    },
+    {
+      "name": "baiduyun.appid",
+      "type": "java.lang.String",
+      "sourceType": "com.heima.common.baiduyun.BaiDuYunContentModerationUtil"
+    },
+    {
+      "name": "baiduyun.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "com.heima.common.baiduyun.BaiDuYunContentModerationUtil"
+    }
+  ],
+  "hints": []
+}

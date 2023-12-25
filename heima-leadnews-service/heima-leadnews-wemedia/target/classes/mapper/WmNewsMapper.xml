@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heima.wemedia.mapper.WmNewsMapper">
+
+    <select id="findListAndPage" resultType="com.heima.model.wemedia.vo.WmNewsVo">
+        SELECT wm_news.*, wm_user.name authorName
+        FROM wm_news
+        LEFT JOIN wm_user ON wm_news.user_id = wm_user.id
+        <where>
+            wm_news.title LIKE CONCAT('%', #{dto.title} ,'%')
+            <if test="dto.status != null">
+                AND wm_news.status = #{dto.status}
+            </if>
+        </where>
+        ORDER BY wm_news.publish_time DESC
+        LIMIT #{dto.page}, #{dto.size}
+    </select>
+
+    <select id="findListCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM wm_news
+        <where>
+            wm_news.title LIKE CONCAT('%', #{dto.title} ,'%')
+            <if test="dto.status != null">
+                AND wm_news.status = #{dto.status}
+            </if>
+        </where>
+    </select>
+
+</mapper>
